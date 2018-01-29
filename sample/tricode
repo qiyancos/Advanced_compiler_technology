@@ -1,0 +1,89 @@
+    instr 1: nop
+    instr 2: entrypc
+    instr 3: enter 88
+    instr 4: move 3 a#-8
+    instr 5: add res_base#32760 GP
+    instr 6: store a#-8 (5)
+    instr 7: mul 3 8
+    instr 8: add b_base#-88 FP
+    instr 9: add (8) (7)
+    instr 10: store 4 (9)
+    instr 11: mul 4 8
+    instr 12: add b_base#-88 FP
+    instr 13: add (12) (11)
+    instr 14: store 1 (13)
+    instr 15: mul 4 8
+    instr 16: add b_base#-88 FP
+    instr 17: add (16) (15)
+    instr 18: mul 3 8
+    instr 19: add b_base#-88 FP
+    instr 20: add (19) (18)
+    instr 21: load (17)
+    instr 22: load (20)
+    instr 23: add (21) (22)
+    instr 24: move (23) a#-8
+    instr 25: mul 5 8
+    instr 26: add b_base#-88 FP
+    instr 27: add (26) (25)
+    instr 28: store 7 (27)
+    instr 29: mul a#-8 8
+    instr 30: add b_base#-88 FP
+    instr 31: add (30) (29)
+    instr 32: load (31)
+    instr 33: write (32)
+    instr 34: mul 3 8
+    instr 35: add b_base#-88 FP
+    instr 36: add (35) (34)
+    instr 37: store 67 (36)
+    instr 38: mul 4 8
+    instr 39: add b_base#-88 FP
+    instr 40: add (39) (38)
+    instr 41: mul 3 8
+    instr 42: add b_base#-88 FP
+    instr 43: add (42) (41)
+    instr 44: load (43)
+    instr 45: add (44) a#-8
+    instr 46: store (45) (40)
+    instr 47: add res_base#32760 GP
+    instr 48: store 4 (47)
+    instr 49: add res_base#32760 GP
+    instr 50: load (49)
+    instr 51: mul (50) 8
+    instr 52: add b_base#-88 FP
+    instr 53: add (52) (51)
+    instr 54: load (53)
+    instr 55: write (54)
+    instr 56: cmple 1 0
+    instr 57: blbs (56) [64]
+    instr 58: add res_base#32760 GP
+    instr 59: load (58)
+    instr 60: add (59) 1
+    instr 61: add res_base#32760 GP
+    instr 62: store (60) (61)
+    instr 63: br [69]
+    instr 64: add res_base#32760 GP
+    instr 65: load (64)
+    instr 66: sub (65) 1
+    instr 67: add res_base#32760 GP
+    instr 68: store (66) (67)
+    instr 69: add res_base#32760 GP
+    instr 70: load (69)
+    instr 71: mul (70) 8
+    instr 72: add b_base#-88 FP
+    instr 73: add (72) (71)
+    instr 74: store 89 (73)
+    instr 75: add res_base#32760 GP
+    instr 76: load (75)
+    instr 77: mul (76) 8
+    instr 78: add b_base#-88 FP
+    instr 79: add (78) (77)
+    instr 80: load (79)
+    instr 81: write (80)
+    instr 82: mul 3 8
+    instr 83: add b_base#-88 FP
+    instr 84: add (83) (82)
+    instr 85: load (84)
+    instr 86: write (85)
+    instr 87: write a#-8
+    instr 88: ret 0
+    instr 89: nop

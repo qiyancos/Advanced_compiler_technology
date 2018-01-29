@@ -1,0 +1,157 @@
+ Total lines: 157
+ main
+ def func instr 3 with 288 Bytes local var
+ i#-272 = 0;r4 = 0
+ r5 = (i#-272 >= 4 ? 1:0)
+ if(r5)goto instr 28
+ j#-280 = 0;r7 = 0
+ r8 = (j#-280 >= 3 ? 1:0)
+ if(r8)goto instr 24
+ r10 = i#-272 * 24
+ r11 = m1_base#-96 + FP
+ r12 = r11 + r10
+ r13 = j#-280 * 8
+ r14 = r12 + r13
+ r15 = j#-280 * 2
+ r16 = i#-272 + r15
+ *(r14) = r16
+ r18 = j#-280 * 2
+ r19 = i#-272 + r18
+ printf("%l",r19)
+ r21 = j#-280 + 1
+ j#-280 = r21;r22 = r21
+ goto instr 8
+ printf("\n")
+ r25 = i#-272 + 1
+ i#-272 = r25;r26 = r25
+ goto instr 5
+ i#-272 = 0;r28 = 0
+ r29 = (i#-272 >= 4 ? 1:0)
+ if(r29)goto instr 52
+ j#-280 = 0;r31 = 0
+ r32 = (j#-280 >= 3 ? 1:0)
+ if(r32)goto instr 49
+ r34 = j#-280 * 32
+ r35 = m2_base#-192 + FP
+ r36 = r35 + r34
+ r37 = i#-272 * 8
+ r38 = r36 + r37
+ r39 = i#-272 * 24
+ r40 = m1_base#-96 + FP
+ r41 = r40 + r39
+ r42 = j#-280 * 8
+ r43 = r41 + r42
+ r44 = *(r43)
+ *(r38) = r44
+ r46 = j#-280 + 1
+ j#-280 = r46;r47 = r46
+ goto instr 32
+ r49 = i#-272 + 1
+ i#-272 = r49;r50 = r49
+ goto instr 29
+ printf("\n")
+ i#-272 = 0;r53 = 0
+ r54 = (i#-272 >= 3 ? 1:0)
+ if(r54)goto instr 73
+ j#-280 = 0;r56 = 0
+ r57 = (j#-280 >= 4 ? 1:0)
+ if(r57)goto instr 69
+ r59 = i#-272 * 32
+ r60 = m2_base#-192 + FP
+ r61 = r60 + r59
+ r62 = j#-280 * 8
+ r63 = r61 + r62
+ r64 = *(r63)
+ printf("%l",r64)
+ r66 = j#-280 + 1
+ j#-280 = r66;r67 = r66
+ goto instr 57
+ printf("\n")
+ r70 = i#-272 + 1
+ i#-272 = r70;r71 = r70
+ goto instr 54
+ i#-272 = 0;r73 = 0
+ r74 = (i#-272 >= 3 ? 1:0)
+ if(r74)goto instr 91
+ j#-280 = 0;r76 = 0
+ r77 = (j#-280 >= 3 ? 1:0)
+ if(r77)goto instr 88
+ r79 = i#-272 * 24
+ r80 = m3_base#-264 + FP
+ r81 = r80 + r79
+ r82 = j#-280 * 8
+ r83 = r81 + r82
+ *(r83) = 0
+ r85 = j#-280 + 1
+ j#-280 = r85;r86 = r85
+ goto instr 77
+ r88 = i#-272 + 1
+ i#-272 = r88;r89 = r88
+ goto instr 74
+ printf("\n")
+ i#-272 = 0;r92 = 0
+ r93 = (i#-272 >= 3 ? 1:0)
+ if(r93)goto instr 136
+ j#-280 = 0;r95 = 0
+ r96 = (j#-280 >= 3 ? 1:0)
+ if(r96)goto instr 133
+ k#-288 = 0;r98 = 0
+ r99 = (k#-288 >= 4 ? 1:0)
+ if(r99)goto instr 130
+ r101 = i#-272 * 24
+ r102 = m3_base#-264 + FP
+ r103 = r102 + r101
+ r104 = j#-280 * 8
+ r105 = r103 + r104
+ r106 = i#-272 * 24
+ r107 = m3_base#-264 + FP
+ r108 = r107 + r106
+ r109 = j#-280 * 8
+ r110 = r108 + r109
+ r111 = k#-288 * 24
+ r112 = m1_base#-96 + FP
+ r113 = r112 + r111
+ r114 = j#-280 * 8
+ r115 = r113 + r114
+ r116 = i#-272 * 32
+ r117 = m2_base#-192 + FP
+ r118 = r117 + r116
+ r119 = k#-288 * 8
+ r120 = r118 + r119
+ r121 = *(r115)
+ r122 = *(r120)
+ r123 = r121 * r122
+ r124 = *(r110)
+ r125 = r124 + r123
+ *(r105) = r125
+ r127 = k#-288 + 1
+ k#-288 = r127;r128 = r127
+ goto instr 99
+ r130 = j#-280 + 1
+ j#-280 = r130;r131 = r130
+ goto instr 96
+ r133 = i#-272 + 1
+ i#-272 = r133;r134 = r133
+ goto instr 93
+ i#-272 = 0;r136 = 0
+ r137 = (i#-272 >= 3 ? 1:0)
+ if(r137)goto instr 156
+ j#-280 = 0;r139 = 0
+ r140 = (j#-280 >= 3 ? 1:0)
+ if(r140)goto instr 152
+ r142 = i#-272 * 24
+ r143 = m3_base#-264 + FP
+ r144 = r143 + r142
+ r145 = j#-280 * 8
+ r146 = r144 + r145
+ r147 = *(r146)
+ printf("%l",r147)
+ r149 = j#-280 + 1
+ j#-280 = r149;r150 = r149
+ goto instr 140
+ printf("\n")
+ r153 = i#-272 + 1
+ i#-272 = r153;r154 = r153
+ goto instr 137
+ return and del 0 Bytes param
+

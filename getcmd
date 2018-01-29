@@ -1,0 +1,12 @@
+#! /bin/bash
+DIR="/home/$USER/clab/lab1&2"
+cd ${DIR}/examples
+sc=`ls *.c`
+cd $TOP
+for sf in $sc
+do
+st=`sed 's/\.c//' << Now
+$sf
+Now`
+awk "/$1/{print}" $DIR/tri/$st.tri
+done

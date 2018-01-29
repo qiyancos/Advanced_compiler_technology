@@ -1,0 +1,51 @@
+ Total lines: 51
+ def func instr 2 with 8 Bytes local var
+ r3 = (b#16 == 0 ? 1:0)
+ if(!r3)goto instr 14
+ c#-8 = a#24;r5 = a#24
+ a#24 = b#16;r6 = b#16
+ r7 = c#-8 % b#16
+ b#16 = r7;r8 = r7
+ printf("%l",c#-8)
+ printf("%l",a#24)
+ printf("%l",b#16)
+ printf("\n")
+ goto instr 3
+ r14 = res_base#32744 + GP
+ *(r14) = a#24
+ return and del 16 Bytes param
+ main
+ def func instr 18 with 0 Bytes local var
+ r19 = a_base#32760 + GP
+ *(r19) = 25733
+ r21 = b_base#32752 + GP
+ *(r21) = 48611
+ r23 = a_base#32760 + GP
+ r24 = *(r23)
+ param from r24
+ r26 = b_base#32752 + GP
+ r27 = *(r26)
+ param from r27
+ call func instr 2
+ r30 = res_base#32744 + GP
+ r31 = *(r30)
+ printf("%l",r31)
+ printf("\n")
+ printf("\n")
+ r35 = a_base#32760 + GP
+ *(r35) = 7485671
+ r37 = b_base#32752 + GP
+ *(r37) = 7480189
+ r39 = a_base#32760 + GP
+ r40 = *(r39)
+ param from r40
+ r42 = b_base#32752 + GP
+ r43 = *(r42)
+ param from r43
+ call func instr 2
+ r46 = res_base#32744 + GP
+ r47 = *(r46)
+ printf("%l",r47)
+ printf("\n")
+ return and del 0 Bytes param
+

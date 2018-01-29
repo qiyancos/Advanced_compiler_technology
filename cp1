@@ -1,0 +1,119 @@
+#! /bin/bash
+DIR="/home/$USER/clab/lab1&2"
+
+ofs(){
+if [ $2x = 6x ]
+then
+if [ $1 = 4 ]
+then s4=`sed 's/#/ /' <<Now
+$s4
+Now`
+else s5=`sed 's/#/ /' <<Now
+$s5
+Now`
+fi
+fi
+}
+
+getone(){ 
+line=$1
+}
+
+trans1(){
+num=$i
+s4=`${DIR}/bin/tools <<Now
+1 $4
+Now`
+s5=`${DIR}/bin/tools <<Now
+1 $5
+Now`
+case $3 in
+add)
+temp=" r$num = $s4 + $s5";;
+sub)
+temp=" r$num = $s4 - $s5";;
+mul)
+temp=" r$num = $s4 * $s5";;
+div)
+temp=" r$num = $s4 / $s5";;
+mod)
+temp=" r$num = $s4 % $s5";;
+neg)
+temp=" r$num = -$s4";;
+
+cmpeq)
+temp=" r$num = ($s4 == $s5 ? 1:0)";;
+cmple)
+temp=" r$num = ($s4 <= $s5 ? 1:0)";;
+cmplt)
+temp=" r$num = ($s4 >= $s5 ? 1:0)";;
+
+br)
+temp=" goto $s4";;
+blbc)
+temp=" if($s4)goto $s5";;
+blbs)
+temp=" if(!$s4)goto $s5";;
+call)
+temp=" call func $s4";;
+
+load)
+temp=" r$num = *($s4)";;
+store)
+temp=" *($s5) = $s4";;
+move)
+temp=" $s5 = $s4;r$num = $s4";;
+
+read)
+temp=" scanf(\"%l\",r$num)";;
+write)
+temp=" printf(\"%l\",$s4)";;
+wrl)
+temp=" printf(\"\\\n\")";;
+
+param)
+temp=" param from $s4";;
+enter)
+temp=" def func instr $num with $s4 Bytes local var";;
+entrypc)
+temp=" main";;
+ret)
+temp=" return and del $s4 Bytes param";;
+
+nop)
+temp='';;
+*)
+temp=" line $num: Unknown type of CSC language!";;
+esac
+}
+
+if [ -f $1 ]
+then
+if [ $2 = $DIR ]
+then $2 = $TOP/output
+fi
+a=`wc -l $1`
+getone $a
+i=2
+tricode=" Total lines: $line"
+
+if [ $3x = -sx ]
+then
+echo Trans to midc $1
+sed "s%nop%$line%" $1 > ${1}1
+$DIR/bin/trans < ${1}1 > ${2}2
+rm ${1}1
+
+else
+echo Trans to mid1 $1
+while [ $i -le $line ]
+do
+trans1 `sed -n ${i}p $1`
+tricode="$tricode\n$temp"
+i=$[i+1]
+done
+echo -e "$tricode" > ${2}1
+fi
+
+else echo "No such file or directory!"
+fi

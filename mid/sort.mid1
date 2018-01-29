@@ -1,0 +1,80 @@
+ Total lines: 80
+ main
+ def func instr 3 with 104 Bytes local var
+ i#-8 = 0;r4 = 0
+ r5 = (i#-8 >= 10 ? 1:0)
+ if(r5)goto instr 16
+ r7 = i#-8 * 8
+ r8 = array_base#-104 + FP
+ r9 = r8 + r7
+ r10 = 10 - i#-8
+ r11 = r10 - 1
+ *(r9) = r11
+ r13 = i#-8 + 1
+ i#-8 = r13;r14 = r13
+ goto instr 5
+ i#-8 = 0;r16 = 0
+ r17 = (i#-8 >= 10 ? 1:0)
+ if(r17)goto instr 27
+ r19 = i#-8 * 8
+ r20 = array_base#-104 + FP
+ r21 = r20 + r19
+ r22 = *(r21)
+ printf("%l",r22)
+ r24 = i#-8 + 1
+ i#-8 = r24;r25 = r24
+ goto instr 17
+ printf("\n")
+ i#-8 = 0;r28 = 0
+ r29 = (i#-8 >= 10 ? 1:0)
+ if(r29)goto instr 67
+ j#-16 = 0;r31 = 0
+ r32 = (j#-16 >= i#-8 ? 1:0)
+ if(r32)goto instr 64
+ r34 = j#-16 * 8
+ r35 = array_base#-104 + FP
+ r36 = r35 + r34
+ r37 = i#-8 * 8
+ r38 = array_base#-104 + FP
+ r39 = r38 + r37
+ r40 = *(r36)
+ r41 = *(r39)
+ r42 = (r40 <= r41 ? 1:0)
+ if(!r42)goto instr 61
+ r44 = i#-8 * 8
+ r45 = array_base#-104 + FP
+ r46 = r45 + r44
+ r47 = *(r46)
+ temp#-24 = r47;r48 = r47
+ r49 = i#-8 * 8
+ r50 = array_base#-104 + FP
+ r51 = r50 + r49
+ r52 = j#-16 * 8
+ r53 = array_base#-104 + FP
+ r54 = r53 + r52
+ r55 = *(r54)
+ *(r51) = r55
+ r57 = j#-16 * 8
+ r58 = array_base#-104 + FP
+ r59 = r58 + r57
+ *(r59) = temp#-24
+ r61 = j#-16 + 1
+ j#-16 = r61;r62 = r61
+ goto instr 32
+ r64 = i#-8 + 1
+ i#-8 = r64;r65 = r64
+ goto instr 29
+ i#-8 = 0;r67 = 0
+ r68 = (i#-8 >= 10 ? 1:0)
+ if(r68)goto instr 78
+ r70 = i#-8 * 8
+ r71 = array_base#-104 + FP
+ r72 = r71 + r70
+ r73 = *(r72)
+ printf("%l",r73)
+ r75 = i#-8 + 1
+ i#-8 = r75;r76 = r75
+ goto instr 68
+ printf("\n")
+ return and del 0 Bytes param
+

@@ -1,0 +1,195 @@
+#!/bin/bash
+DIR="/home/$USER/clab/lab1&2"
+if [ ${1}x = x -o ${1}x = -hx ]
+
+then
+echo
+echo "===========================================================================
+    Copyright reserved by Rock Lee, any unauthorized publishing of this 
+    software is illegal!
+==========================================================================="
+echo
+echo "    Usage: > run [-t/-h/-r] [-s] [-op1/-op2/-op3];"
+echo "             {Use this command to test the given examples, ask for help
+              or check the README file in the terminal}"
+echo "           > run <sourcefile> [-s] [-op1/-op2/-op3];"
+echo "             {Use this command to test a single example}"
+echo
+echo "    [-h]      Check for the help note"
+echo "    [-hr]     Show the content of the README file in this terminal"
+echo "    [-r1/-r2] Show the report generated since the last test"
+echo "    [-t]      Test the given examples saved in the following folder: 
+              $DIR/examples 
+              (Only files whose names have a specific prefix \"mytest_\" will
+              be tested with the options [-op1/-op2/-op3])"
+echo "    [-s]      Generate a mid data file for excutable C translator and
+              run a complete test."
+echo "    [-op1]    Run the software with constant propagation optimization."
+echo "    [-op2]    Run the software with unavailabel code elimination
+              optimization."
+echo "    [-op3]    Run the software with constant propagation optimization 
+              and then unavailable code elimination optimization."
+echo
+echo "    A comment file of tricode will be generated in default, if you don't
+    use [-s]. And the test will not be excuted either."
+echo "    The optimazation options [-op1/-op2/-op3] can be used only with [-s]."
+echo
+echo "    Only the file name is needed, instead of the whole path if you are
+    going to test a single file without the [-t] option!"
+echo "    And the output file will be automatically saved in the folder:
+    $DIR/samples"
+echo
+echo "    Attention: Some of the parameters might have not been set big enough,
+    if you recieve a segment error when runing the software or recieved 
+    an error information from this software on the screen."
+echo
+echo "    You may read the README file for more introduction of this software
+    by using the [-r] option."
+echo 
+echo "==========================================================================="
+echo
+
+else
+if [ $1x = -hrx ]
+then sed "s%\$USER%$USER%" $DIR/README
+
+else if [ $1x = -r1x ]
+then
+if [ -f $DIR/reports/report1.txt ]
+then awk "{print}" $DIR/reports/report1.txt
+else 
+echo "No report found from lab1!"
+echo "Please run the test of lab1 first!"
+fi
+
+else if [ $1x = -r2x ]
+then
+if [ -f $DIR/reports/report2.txt ]
+then awk "{print}" $DIR/reports/report2.txt
+else 
+echo "No report found from lab1!"
+echo "Please run the test of lab1 first!"
+fi
+
+else
+## search for every single example C files
+cd ${DIR}/examples
+sc=`ls *.c`
+cd $TOP
+
+## prepare the binary elf file
+g++ "${DIR}/bin/src/tools.cpp" -o "${DIR}/bin/tools"
+if [ $? != 0 ]
+then echo "Word Trans Tool Compile Error!"
+exit
+fi
+g++ "${DIR}/bin/src/trans.cpp" -o "${DIR}/bin/trans"
+if [ $? != 0 ]
+then echo "Trans Tool Compile Error!"
+exit
+fi
+
+if [ $3x != x ]
+then
+rm -rf $DIR/reports/report2.txt
+rm -rf $DIR/reports/report2/
+g++ "${DIR}/bin/src/getcfg.cpp" -o "${DIR}/bin/getcfg"
+if [ $? != 0 ]
+then echo "CFG-Generator Tool Compile Error!"
+exit
+fi
+g++ "${DIR}/bin/src/optcp.cpp" -o "${DIR}/bin/optcp"
+if [ $? != 0 ]
+then echo "Const-Propagation Tool Compile Error!"
+exit
+fi
+g++ "${DIR}/bin/src/optdce.cpp" -o "${DIR}/bin/optdce"
+if [ $? != 0 ]
+then echo "Deadcode-Elimination Tool Compile Error!"
+exit
+fi
+g++ "${DIR}/bin/src/decp.cpp" -o "${DIR}/bin/decp"
+if [ $? != 0 ]
+then echo "Decompile Tool Compile Error!"
+exit
+fi
+
+else
+rm $DIR/reports/report1.txt
+g++ "${DIR}/bin/src/decp.cpp" -o "${DIR}/bin/decp"
+if [ $? != 0 ]
+then echo "Decompile Tool Compile Error!"
+exit
+fi
+fi
+
+echo "> Tools have been built successfully!"
+echo
+
+if [ $1 = '-t' ]
+then
+echo "> Start testing examples!"
+echo
+## decompile every example C files found then
+for sf in $sc
+do
+st=`sed 's/\.c//' << Now
+$sf
+Now`
+${DIR}/csc/csc ${DIR}/examples/$sf > ${DIR}/tri/$st.tri
+${DIR}/cp1 ${DIR}/tri/$st.tri ${DIR}/mid/$st.mid $2
+
+if [ $3x != x ]
+then
+case $3x in
+-op1x)
+opoption=-1;;
+-op2x)
+opoption=-2;;
+-op3x)
+opoption=-3;;
+esac
+$DIR/op -1 $st $opoption
+echo
+
+else ${DIR}/cp2 ${DIR}/mid/$st.midc $st $2
+echo
+fi
+done
+echo "> Examples tested Over!"
+echo
+
+else
+if [ ! -f $DIR/sample/$1.c ]
+then
+echo "Illegal Input: No such file or directory!"
+echo "Use -h for help!"
+
+else
+echo "> Start testing sample $1.c"
+${DIR}/csc/csc $DIR/sample/$1.c > ${DIR}/sample/tricode
+${DIR}/cp1 ${DIR}/sample/tricode ${DIR}/sample/mid $2
+
+if [ $3x != x ]
+then
+case $3x in
+-op1x)
+opoption=-1;;
+-op2x)
+opoption=-2;;
+-op3x)
+opoption=-3;;
+esac
+$DIR/op -2 $1 $opoption
+echo
+
+else ${DIR}/cp2 ${DIR}/sample/midc $1 $2 -1
+echo "> Sample $1.c tested over! "
+echo
+fi
+fi
+fi
+fi
+fi
+fi
+fi

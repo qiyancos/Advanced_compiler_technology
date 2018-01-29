@@ -1,0 +1,124 @@
+    instr 1: nop
+    instr 2: entrypc
+    instr 3: enter 96
+    instr 4: add c_base#-72 FP
+    instr 5: add (4) z_offset#16
+    instr 6: mul 1 24
+    instr 7: add (5) (6)
+    instr 8: add (7) r_offset#8
+    instr 9: store 987654321 (8)
+    instr 10: add a_base#32704 GP
+    instr 11: add (10) x_offset#0
+    instr 12: store 1 (11)
+    instr 13: add a_base#32704 GP
+    instr 14: add (13) y_offset#8
+    instr 15: store 2 (14)
+    instr 16: add c_base#-72 FP
+    instr 17: add (16) x_offset#0
+    instr 18: store 9 (17)
+    instr 19: add c_base#-72 FP
+    instr 20: add (19) y_offset#8
+    instr 21: store 0 (20)
+    instr 22: mul 0 64
+    instr 23: add b_base#32512 GP
+    instr 24: add (23) (22)
+    instr 25: add (24) x_offset#0
+    instr 26: store 3 (25)
+    instr 27: mul 0 64
+    instr 28: add b_base#32512 GP
+    instr 29: add (28) (27)
+    instr 30: add (29) y_offset#8
+    instr 31: store 4 (30)
+    instr 32: add a_base#32704 GP
+    instr 33: add (32) x_offset#0
+    instr 34: load (33)
+    instr 35: mul (34) 64
+    instr 36: add b_base#32512 GP
+    instr 37: add (36) (35)
+    instr 38: add (37) x_offset#0
+    instr 39: store 5 (38)
+    instr 40: add a_base#32704 GP
+    instr 41: add (40) x_offset#0
+    instr 42: load (41)
+    instr 43: mul (42) 64
+    instr 44: add b_base#32512 GP
+    instr 45: add (44) (43)
+    instr 46: add (45) y_offset#8
+    instr 47: store 6 (46)
+    instr 48: add a_base#32704 GP
+    instr 49: add (48) x_offset#0
+    instr 50: load (49)
+    instr 51: sub (50) 1
+    instr 52: mul (51) 64
+    instr 53: add b_base#32512 GP
+    instr 54: add (53) (52)
+    instr 55: add (54) x_offset#0
+    instr 56: load (55)
+    instr 57: sub (56) 1
+    instr 58: mul (57) 64
+    instr 59: add b_base#32512 GP
+    instr 60: add (59) (58)
+    instr 61: add (60) x_offset#0
+    instr 62: store 7 (61)
+    instr 63: add a_base#32704 GP
+    instr 64: add (63) y_offset#8
+    instr 65: load (64)
+    instr 66: sub (65) 2
+    instr 67: mul (66) 64
+    instr 68: add b_base#32512 GP
+    instr 69: add (68) (67)
+    instr 70: add (69) x_offset#0
+    instr 71: load (70)
+    instr 72: sub (71) 1
+    instr 73: mul (72) 64
+    instr 74: add b_base#32512 GP
+    instr 75: add (74) (73)
+    instr 76: add (75) y_offset#8
+    instr 77: store 8 (76)
+    instr 78: add a_base#32704 GP
+    instr 79: add (78) x_offset#0
+    instr 80: load (79)
+    instr 81: write (80)
+    instr 82: add a_base#32704 GP
+    instr 83: add (82) y_offset#8
+    instr 84: load (83)
+    instr 85: write (84)
+    instr 86: wrl
+    instr 87: move 0 i#-8
+    instr 88: cmplt i#-8 3
+    instr 89: blbc (88) [106]
+    instr 90: mul i#-8 64
+    instr 91: add b_base#32512 GP
+    instr 92: add (91) (90)
+    instr 93: add (92) x_offset#0
+    instr 94: load (93)
+    instr 95: write (94)
+    instr 96: mul i#-8 64
+    instr 97: add b_base#32512 GP
+    instr 98: add (97) (96)
+    instr 99: add (98) y_offset#8
+    instr 100: load (99)
+    instr 101: write (100)
+    instr 102: wrl
+    instr 103: add i#-8 1
+    instr 104: move (103) i#-8
+    instr 105: br [88]
+    instr 106: add c_base#-72 FP
+    instr 107: add (106) x_offset#0
+    instr 108: load (107)
+    instr 109: write (108)
+    instr 110: add c_base#-72 FP
+    instr 111: add (110) y_offset#8
+    instr 112: load (111)
+    instr 113: write (112)
+    instr 114: wrl
+    instr 115: add c_base#-72 FP
+    instr 116: add (115) z_offset#16
+    instr 117: mul 1 24
+    instr 118: add (116) (117)
+    instr 119: add (118) r_offset#8
+    instr 120: load (119)
+    instr 121: write (120)
+    instr 122: wrl
+    instr 123: ret 0
+    instr 124: nop

@@ -1,0 +1,93 @@
+ Total lines: 93
+ main
+ def func instr 3 with 0 Bytes local var
+ r4 = max_base#32728 + GP
+ *(r4) = 0
+ r6 = i_base#32760 + GP
+ *(r6) = 5
+ r8 = max_base#32728 + GP
+ r9 = *(r8)
+ r10 = (r9 >= 270 ? 1:0)
+ if(r10)goto instr 84
+ r12 = k_base#32736 + GP
+ *(r12) = 0
+ r14 = i_base#32760 + GP
+ r15 = *(r14)
+ r16 = j_base#32752 + GP
+ *(r16) = r15
+ r18 = j_base#32752 + GP
+ r19 = *(r18)
+ r20 = (r19 == 4 ? 1:0)
+ if(!r20)goto instr 56
+ r22 = j_base#32752 + GP
+ r23 = *(r22)
+ r24 = r23 % 2
+ r25 = (r24 == 1 ? 1:0)
+ if(r25)goto instr 45
+ r27 = j_base#32752 + GP
+ r28 = *(r27)
+ r29 = j_base#32752 + GP
+ r30 = *(r29)
+ r31 = r28 + r30
+ r32 = j_base#32752 + GP
+ r33 = *(r32)
+ r34 = r31 + r33
+ r35 = r34 + 1
+ r36 = r35 / 2
+ r37 = j_base#32752 + GP
+ *(r37) = r36
+ r39 = k_base#32736 + GP
+ r40 = *(r39)
+ r41 = r40 + 2
+ r42 = k_base#32736 + GP
+ *(r42) = r41
+ goto instr 55
+ r45 = j_base#32752 + GP
+ r46 = *(r45)
+ r47 = r46 / 2
+ r48 = j_base#32752 + GP
+ *(r48) = r47
+ r50 = k_base#32736 + GP
+ r51 = *(r50)
+ r52 = r51 + 1
+ r53 = k_base#32736 + GP
+ *(r53) = r52
+ goto instr 18
+ r56 = k_base#32736 + GP
+ r57 = *(r56)
+ r58 = max_base#32728 + GP
+ r59 = *(r58)
+ r60 = (r57 <= r59 ? 1:0)
+ if(!r60)goto instr 78
+ r62 = k_base#32736 + GP
+ r63 = *(r62)
+ r64 = max_base#32728 + GP
+ *(r64) = r63
+ r66 = i_base#32760 + GP
+ r67 = *(r66)
+ r68 = maxi_base#32744 + GP
+ *(r68) = r67
+ r70 = max_base#32728 + GP
+ r71 = *(r70)
+ r72 = r71 + 2
+ printf("%l",r72)
+ r74 = maxi_base#32744 + GP
+ r75 = *(r74)
+ printf("%l",r75)
+ printf("\n")
+ r78 = i_base#32760 + GP
+ r79 = *(r78)
+ r80 = r79 + 1
+ r81 = i_base#32760 + GP
+ *(r81) = r80
+ goto instr 8
+ r84 = max_base#32728 + GP
+ r85 = *(r84)
+ r86 = r85 + 2
+ printf("%l",r86)
+ r88 = maxi_base#32744 + GP
+ r89 = *(r88)
+ printf("%l",r89)
+ printf("\n")
+ return and del 0 Bytes param
+

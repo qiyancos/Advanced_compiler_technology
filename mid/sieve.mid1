@@ -1,0 +1,61 @@
+ Total lines: 61
+ main
+ def func instr 3 with 8016 Bytes local var
+ r4 = 0 * 8
+ r5 = is_prime_base#-8016 + FP
+ r6 = r5 + r4
+ *(r6) = 0
+ r8 = 1 * 8
+ r9 = is_prime_base#-8016 + FP
+ r10 = r9 + r8
+ *(r10) = 0
+ i#-8 = 2;r12 = 2
+ r13 = (i#-8 >= 1000 ? 1:0)
+ if(r13)goto instr 22
+ r15 = i#-8 * 8
+ r16 = is_prime_base#-8016 + FP
+ r17 = r16 + r15
+ *(r17) = 1
+ r19 = i#-8 + 1
+ i#-8 = r19;r20 = r19
+ goto instr 13
+ i#-8 = 2;r22 = 2
+ r23 = (i#-8 >= 1000 ? 1:0)
+ if(r23)goto instr 46
+ r25 = i#-8 * 8
+ r26 = is_prime_base#-8016 + FP
+ r27 = r26 + r25
+ r28 = *(r27)
+ r29 = (r28 == 0 ? 1:0)
+ if(!r29)goto instr 43
+ j#-16 = 2;r31 = 2
+ r32 = i#-8 * j#-16
+ r33 = (r32 >= 1000 ? 1:0)
+ if(r33)goto instr 43
+ r35 = i#-8 * j#-16
+ r36 = r35 * 8
+ r37 = is_prime_base#-8016 + FP
+ r38 = r37 + r36
+ *(r38) = 0
+ r40 = j#-16 + 1
+ j#-16 = r40;r41 = r40
+ goto instr 32
+ r43 = i#-8 + 1
+ i#-8 = r43;r44 = r43
+ goto instr 23
+ i#-8 = 2;r46 = 2
+ r47 = (i#-8 >= 1000 ? 1:0)
+ if(r47)goto instr 59
+ r49 = i#-8 * 8
+ r50 = is_prime_base#-8016 + FP
+ r51 = r50 + r49
+ r52 = *(r51)
+ r53 = (r52 == 0 ? 1:0)
+ if(!r53)goto instr 56
+ printf("%l",i#-8)
+ r56 = i#-8 + 1
+ i#-8 = r56;r57 = r56
+ goto instr 47
+ printf("\n")
+ return and del 0 Bytes param
+

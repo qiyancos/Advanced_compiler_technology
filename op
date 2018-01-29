@@ -1,0 +1,168 @@
+#! /bin/bash
+DIR="/home/$USER/clab/lab1&2"
+start="#include <stdio.h> \n
+#define WriteLine() printf(\"\\\n\"); \n
+#define WriteLong(x) printf(\" %lld\", (long)x); \n
+#define ReadLong(a) if (fscanf(stdin, \"%lld\", &a) != 1) a = 0; \n
+#define long long long"
+
+report(){
+if [ ${6}x == -cfgx ]
+
+then 
+echo "$DIR/examples/$5.c"
+echo -n "CFG Test "
+
+else
+if [ $7 = -1x ]
+then echo "$DIR/examples/$5.c"
+else echo "$DIR/sample/$5.c"
+fi
+echo -n "Optimization Test "
+fi
+
+if [ $1 = $3 ]
+then 
+echo "> Test Passed!"
+echo
+else 
+echo "> Test Failed!"
+echo
+fi
+}
+
+if [ $1 = -1 ]
+then
+awk "{print}" $DIR/mid/$2.mid2 > $DIR/mid/${2}_cfg.midc
+awk "{print}" $DIR/mid/$2.mid2 > $DIR/mid/${2}_op.midc
+awk "{print}" $DIR/mid/$2.mid2 >> $DIR/mid/${2}_op.midc
+awk "{print}" $DIR/mid/$2.mid2 >> $DIR/mid/${2}_op.midc
+rm $DIR/mid/$2.mid2
+echo "Generate CFG file $DIR/mid/${2}_cfg.midc"
+$DIR/bin/getcfg < $DIR/mid/${2}_cfg.midc > $DIR/cfg/tg/$2.cfg
+if [ ${2:0:6} != "mytest_" ]
+
+then
+report `md5sum $DIR/cfg/tg/$2.cfg $DIR/cfg/sc/$2.ta.cfg` $2 -cfg >> $DIR/reports/report2.txt
+
+else if [ $3 = -1 ]
+then 
+echo "Perform the constant propagation optimization $DIR/mid/${2}_op.midc"
+$DIR/bin/optcp < $DIR/mid/${2}_op.midc > $DIR/mid_op/${2}_cp.midc
+awk "{print}" $DIR/mid_op/${2}_cp.midc >> $DIR/mid_op/${2}_cp.midc
+echo "Decompile to final C file $DIR/mid_op/${2}_cp.opmid"
+echo -e $start > $DIR/mid_op/${2}_cp.c
+$DIR/bin/decp < $DIR/mid_op/${2}_cp.midc >> $DIR/finalc_op/${2}_cp.c
+echo "Compile the C files and check the output!"
+gcc $DIR/finalc_op/${2}_cp.c -o $DIR/elf_op/tg/${2}
+
+else if [ $3 = -2 ]
+then 
+echo "Perform the unavailable code optimization $DIR/mid/${2}_op.midc" 
+$DIR/bin/optdce < $DIR/mid/${2}_op.midc > $DIR/mid_op/${2}_dce.midc
+awk "{print}" $DIR/mid_op/${2}_dce.midc > $DIR/mid_op/${2}_dce1.midc
+awk "{print}" $DIR/mid_op/${2}_dce.midc >> $DIR/mid_op/${2}_dce1.midc
+awk "{print}" $DIR/mid_op/${2}_dce.midc >> $DIR/mid_op/${2}_dce1.midc
+$DIR/bin/optdce < $DIR/mid/${2}_dce1.midc > $DIR/mid_op/${2}_dce.midc
+rm $DIR/mid_op/${2}_dce1.midc
+awk "{print}" $DIR/mid_op/${2}_dce.midc >> $DIR/mid_op/${2}_dce.midc
+echo "Decompile to final C file $DIR/mid_op/${2}_dce.opmid"
+echo -e $start > $DIR/final_op/${2}_dce.c
+$DIR/bin/decp < $DIR/mid_op/${2}_dce.midc >> $DIR/finalc_op/${2}_dce.c
+echo "Compile the C files and check the output!"
+gcc $DIR/finalc_op/${2}_dce.c -o $DIR/elf_op/tg/${2}
+
+else
+echo "Perform the constant propagation optimization $DIR/mid/${2}_op.midc"
+$DIR/bin/optcp < $DIR/mid/${2}_op.midc > $DIR/mid_op/${2}_cp.midc1
+awk "{print}" $DIR/mid_op/${2}_cp.midc1 > $DIR/mid_op/${2}_cp.midc
+awk "{print}" $DIR/mid_op/${2}_cp.midc1 >> $DIR/mid_op/${2}_cp.midc
+awk "{print}" $DIR/mid_op/${2}_cp.midc1 >> $DIR/mid_op/${2}_cp.midc
+rm $DIR/mid_op/${2}_cp.midc1
+echo "Perform the unavailable code optimization $DIR/sample/midc_op"
+$DIR/bin/optdce < $DIR/mid_op/${2}_cp.midc > $DIR/mid_op/${2}_cp_dce.midc
+awk "{print}" $DIR/mid_op/${2}_cp_dce.midc > $DIR/mid_op/${2}_cp_dce1.midc
+awk "{print}" $DIR/mid_op/${2}_cp_dce.midc >> $DIR/mid_op/${2}_cp_dce1.midc
+awk "{print}" $DIR/mid_op/${2}_cp_dce.midc >> $DIR/mid_op/${2}_cp_dce1.midc
+$DIR/bin/optdce < $DIR/mid_op/${2}_cp_dce1.midc > $DIR/mid_op/${2}_cp_dce.midc
+rm $DIR/mid_op/${2}_cp_dce1.midc
+awk "{print}" $DIR/mid_op/${2}_cp_dce.midc >> $DIR/mid_op/${2}_cp_dce.midc
+echo "Decompile to final C file $DIR/mid_op/${2}_cp_dce.midc"
+echo -e $start > $DIR/finalc_op/${2}_cp_dce.c
+$DIR/bin/decp < $DIR/mid_op/${2}_cp_dce.midc >> $DIR/finalc_op/${2}_cp_dce.c
+echo "Compile the C files and check the output!"
+gcc $DIR/finalc_op/${2}_cp_dce.c -o $DIR/elf_op/tg/${2}
+fi
+fi
+gcc $DIR/examples/${2}.c -o $DIR/elf_op/sc/${2}
+$DIR/elf_op/sc/${2} > $DIR/tempsc
+$DIR/elf_op/tg/${2} > $DIR/temptg
+report `md5sum $DIR/tempsc $DIR/temptg` $2 -elf >> $DIR/reports/report2.txt
+rm $DIR/tempsc
+rm $DIR/temptg
+fi
+
+else
+awk "{print}" $DIR/sample/mid2 > $DIR/sample/midc_cfg
+awk "{print}" $DIR/sample/mid2 > $DIR/sample/midc_op
+awk "{print}" $DIR/sample/mid2 >> $DIR/sample/midc_op
+awk "{print}" $DIR/sample/mid2 >> $DIR/sample/midc_op
+rm $DIR/sample/mid2
+echo "Generate CFG file $DIR/sample/midc_op"
+$DIR/bin/getcfg < $DIR/sample/midc_cfg > $DIR/sample/cfg
+if [ $3 = -1 ]
+then
+echo "Perform the constant propagation optimization $DIR/sample/midc_op" 
+$DIR/bin/optcp < $DIR/sample/midc_op > $DIR/sample/midc_cp
+awk "{print}" $DIR/sample/midc_cp >> $DIR/sample/midc_cp
+echo "Decompile to final C file $DIR/sample/midc_cp"
+echo -e $start > $DIR/sample/finalc_cp.c
+$DIR/bin/decp < $DIR/sample/midc_cp >> $DIR/sample/finalc_cp.c
+echo "Compile the C files and check the output!"
+gcc $DIR/sample/finalc_cp.c -o $DIR/sample/${2}_decp
+
+else if [ $3 = -2 ]
+then
+echo "Perform the unavailable code optimization $DIR/sample/midc_op" 
+$DIR/bin/optdce < $DIR/sample/midc_op > $DIR/sample/midc_dce
+awk "{print}" $DIR/sample/midc_dce > $DIR/sample/midc_dce1
+awk "{print}" $DIR/sample/midc_dce >> $DIR/sample/midc_dce1
+awk "{print}" $DIR/sample/midc_dce >> $DIR/sample/midc_dce1
+$DIR/bin/optdce < $DIR/sample/midc_dce1 > $DIR/sample/midc_dce
+rm $DIR/sample/midc_dce1
+awk "{print}" $DIR/sample/midc_dce >> $DIR/sample/midc_dce
+echo "Decompile to final C file $DIR/sample/midc_dce"
+echo -e $start > $DIR/sample/finalc_dce.c
+$DIR/bin/decp < $DIR/sample/midc_dce >> $DIR/sample/finalc_dce.c
+echo "Compile the C files and check the output!"
+gcc $DIR/sample/finalc_dce.c -o $DIR/sample/${2}_decp
+
+else
+echo "Perform the constant propagation optimization $DIR/sample/midc_op"
+$DIR/bin/optcp < $DIR/sample/midc_op > $DIR/sample/midc_cp1
+awk "{print}" $DIR/sample/midc_cp1 > $DIR/sample/midc_cp
+awk "{print}" $DIR/sample/midc_cp1 >> $DIR/sample/midc_cp
+awk "{print}" $DIR/sample/midc_cp1 >> $DIR/sample/midc_cp
+rm $DIR/sample/midc_cp1
+echo "Perform the unavailable code optimization $DIR/sample/midc_cp"
+$DIR/bin/optdce < $DIR/sample/midc_cp > $DIR/sample/midc_cp_dce
+awk "{print}" $DIR/sample/midc_cp_dce > $DIR/sample/midc_cp_dce1
+awk "{print}" $DIR/sample/midc_cp_dce >> $DIR/sample/midc_cp_dce1
+awk "{print}" $DIR/sample/midc_cp_dce >> $DIR/sample/midc_cp_dce1
+$DIR/bin/optdce < $DIR/sample/midc_cp_dce1 > $DIR/sample/midc_cp_dce
+rm $DIR/sample/midc_cp_dce1
+awk "{print}" $DIR/sample/midc_cp_dce >> $DIR/sample/midc_cp_dce
+echo "Decompile to final C file $DIR/sample/midc_cp_dce"
+echo -e $start > $DIR/sample/finalc_cp_dce.c
+$DIR/bin/decp < $DIR/sample/midc_cp_dce >> $DIR/sample/finalc_cp_dce.c
+echo "Compile the C files and check the output!"
+gcc $DIR/sample/finalc_cp_dce.c -o $DIR/sample/${2}_decp
+fi
+fi
+gcc $DIR/sample/${2}.c -o $DIR/sample/${2}
+$DIR/sample/${2} > $DIR/tempsc
+$DIR/sample/${2}_decp > $DIR/temptg
+report `md5sum $DIR/tempsc $DIR/temptg` $2 -elf -1 >> $DIR/reports/report2.txt
+rm $DIR/tempsc
+rm $DIR/temptg
+fi

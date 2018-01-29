@@ -1,0 +1,120 @@
+ Total lines: 120
+ main
+ def func instr 3 with 72 Bytes local var
+ r4 = c_base#-48 + FP
+ r5 = r4 + z_offset#16
+ r6 = r5 + r_offset#8
+ *(r6) = 987654321
+ r8 = a_base#32728 + GP
+ r9 = r8 + x_offset#0
+ *(r9) = 1
+ r11 = a_base#32728 + GP
+ r12 = r11 + y_offset#8
+ *(r12) = 2
+ r14 = c_base#-48 + FP
+ r15 = r14 + x_offset#0
+ *(r15) = 9
+ r17 = c_base#-48 + FP
+ r18 = r17 + y_offset#8
+ *(r18) = 0
+ r20 = 0 * 40
+ r21 = b_base#32608 + GP
+ r22 = r21 + r20
+ r23 = r22 + x_offset#0
+ *(r23) = 3
+ r25 = 0 * 40
+ r26 = b_base#32608 + GP
+ r27 = r26 + r25
+ r28 = r27 + y_offset#8
+ *(r28) = 4
+ r30 = a_base#32728 + GP
+ r31 = r30 + x_offset#0
+ r32 = *(r31)
+ r33 = r32 * 40
+ r34 = b_base#32608 + GP
+ r35 = r34 + r33
+ r36 = r35 + x_offset#0
+ *(r36) = 5
+ r38 = a_base#32728 + GP
+ r39 = r38 + x_offset#0
+ r40 = *(r39)
+ r41 = r40 * 40
+ r42 = b_base#32608 + GP
+ r43 = r42 + r41
+ r44 = r43 + y_offset#8
+ *(r44) = 6
+ r46 = a_base#32728 + GP
+ r47 = r46 + x_offset#0
+ r48 = *(r47)
+ r49 = r48 - 1
+ r50 = r49 * 40
+ r51 = b_base#32608 + GP
+ r52 = r51 + r50
+ r53 = r52 + x_offset#0
+ r54 = *(r53)
+ r55 = r54 - 1
+ r56 = r55 * 40
+ r57 = b_base#32608 + GP
+ r58 = r57 + r56
+ r59 = r58 + x_offset#0
+ *(r59) = 7
+ r61 = a_base#32728 + GP
+ r62 = r61 + y_offset#8
+ r63 = *(r62)
+ r64 = r63 - 2
+ r65 = r64 * 40
+ r66 = b_base#32608 + GP
+ r67 = r66 + r65
+ r68 = r67 + x_offset#0
+ r69 = *(r68)
+ r70 = r69 - 1
+ r71 = r70 * 40
+ r72 = b_base#32608 + GP
+ r73 = r72 + r71
+ r74 = r73 + y_offset#8
+ *(r74) = 8
+ r76 = a_base#32728 + GP
+ r77 = r76 + x_offset#0
+ r78 = *(r77)
+ printf("%l",r78)
+ r80 = a_base#32728 + GP
+ r81 = r80 + y_offset#8
+ r82 = *(r81)
+ printf("%l",r82)
+ printf("\n")
+ i#-8 = 0;r85 = 0
+ r86 = (i#-8 >= 3 ? 1:0)
+ if(r86)goto instr 104
+ r88 = i#-8 * 40
+ r89 = b_base#32608 + GP
+ r90 = r89 + r88
+ r91 = r90 + x_offset#0
+ r92 = *(r91)
+ printf("%l",r92)
+ r94 = i#-8 * 40
+ r95 = b_base#32608 + GP
+ r96 = r95 + r94
+ r97 = r96 + y_offset#8
+ r98 = *(r97)
+ printf("%l",r98)
+ printf("\n")
+ r101 = i#-8 + 1
+ i#-8 = r101;r102 = r101
+ goto instr 86
+ r104 = c_base#-48 + FP
+ r105 = r104 + x_offset#0
+ r106 = *(r105)
+ printf("%l",r106)
+ r108 = c_base#-48 + FP
+ r109 = r108 + y_offset#8
+ r110 = *(r109)
+ printf("%l",r110)
+ printf("\n")
+ r113 = c_base#-48 + FP
+ r114 = r113 + z_offset#16
+ r115 = r114 + r_offset#8
+ r116 = *(r115)
+ printf("%l",r116)
+ printf("\n")
+ return and del 0 Bytes param
+

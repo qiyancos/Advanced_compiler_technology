@@ -1,0 +1,48 @@
+ Total lines: 48
+ main
+ def func instr 3 with 64 Bytes local var
+ n#-56 = 13;r4 = 13
+ x#-64 = 0;r5 = 0
+ a#-8 = 0;r6 = 0
+ r7 = (a#-8 >= n#-56 ? 1:0)
+ if(r7)goto instr 45
+ b#-16 = 0;r9 = 0
+ x#-64 = 0;r10 = 0
+ r11 = (b#-16 >= n#-56 ? 1:0)
+ if(r11)goto instr 42
+ c#-24 = 0;r13 = 0
+ r14 = (c#-24 >= n#-56 ? 1:0)
+ if(r14)goto instr 39
+ d#-32 = 0;r16 = 0
+ r17 = (d#-32 >= n#-56 ? 1:0)
+ if(r17)goto instr 36
+ e#-40 = 0;r19 = 0
+ r20 = (e#-40 >= n#-56 ? 1:0)
+ if(r20)goto instr 33
+ f#-48 = 0;r22 = 0
+ r23 = (f#-48 >= n#-56 ? 1:0)
+ if(r23)goto instr 30
+ r25 = x#-64 + 1
+ x#-64 = r25;r26 = r25
+ r27 = f#-48 + 1
+ f#-48 = r27;r28 = r27
+ goto instr 23
+ r30 = e#-40 + 1
+ e#-40 = r30;r31 = r30
+ goto instr 20
+ r33 = d#-32 + 1
+ d#-32 = r33;r34 = r33
+ goto instr 17
+ r36 = c#-24 + 1
+ c#-24 = r36;r37 = r36
+ goto instr 14
+ r39 = b#-16 + 1
+ b#-16 = r39;r40 = r39
+ goto instr 11
+ r42 = a#-8 + 1
+ a#-8 = r42;r43 = r42
+ goto instr 7
+ printf("%l",x#-64)
+ printf("\n")
+ return and del 0 Bytes param
+

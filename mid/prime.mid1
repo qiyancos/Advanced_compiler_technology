@@ -1,0 +1,59 @@
+ Total lines: 59
+ main
+ def func instr 3 with 24 Bytes local var
+ r4 = 0 * 8
+ r5 = prime_base#29568 + GP
+ r6 = r5 + r4
+ *(r6) = 2
+ r8 = 0 * 8
+ r9 = prime_base#29568 + GP
+ r10 = r9 + r8
+ r11 = *(r10)
+ printf("%l",r11)
+ i#-8 = 1;r13 = 1
+ v#-24 = 3;r14 = 3
+ r15 = (i#-8 >= 400 ? 1:0)
+ if(r15)goto instr 57
+ j#-16 = 0;r17 = 0
+ r18 = (j#-16 >= i#-8 ? 1:0)
+ if(r18)goto instr 45
+ r20 = j#-16 * 8
+ r21 = prime_base#29568 + GP
+ r22 = r21 + r20
+ r23 = j#-16 * 8
+ r24 = prime_base#29568 + GP
+ r25 = r24 + r23
+ r26 = *(r22)
+ r27 = *(r25)
+ r28 = r26 * r27
+ r29 = (r28 <= v#-24 ? 1:0)
+ if(!r29)goto instr 34
+ r31 = i#-8 - 1
+ j#-16 = r31;r32 = r31
+ goto instr 42
+ r34 = j#-16 * 8
+ r35 = prime_base#29568 + GP
+ r36 = r35 + r34
+ r37 = *(r36)
+ r38 = v#-24 % r37
+ r39 = (r38 == 0 ? 1:0)
+ if(r39)goto instr 42
+ j#-16 = i#-8;r41 = i#-8
+ r42 = j#-16 + 1
+ j#-16 = r42;r43 = r42
+ goto instr 18
+ r45 = (j#-16 == i#-8 ? 1:0)
+ if(r45)goto instr 54
+ r47 = i#-8 * 8
+ r48 = prime_base#29568 + GP
+ r49 = r48 + r47
+ *(r49) = v#-24
+ printf("%l",v#-24)
+ r52 = i#-8 + 1
+ i#-8 = r52;r53 = r52
+ r54 = v#-24 + 2
+ v#-24 = r54;r55 = r54
+ goto instr 15
+ printf("\n")
+ return and del 0 Bytes param
+
